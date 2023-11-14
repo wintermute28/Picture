@@ -1,11 +1,7 @@
-// import checkNumInputs from './checkNumInputs';
-
 const forms = () => {
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
-          upload = document.querySelectorAll("[name='upload']");
-
-    // checkNumInputs('input[name="user_phone"]');
+          upload = document.querySelectorAll('[name="upload"]');
     
     const message = {
         loading: 'Загрузка...',
@@ -17,8 +13,8 @@ const forms = () => {
     };
 
     const path = {
-        designer: "assets/server.php",
-        question: "assets/question.php"
+        designer: 'assets/server.php',
+        question: 'assets/question.php'
     };
 
     const postData = async (url, data) => {
@@ -34,17 +30,18 @@ const forms = () => {
         inputs.forEach(item => {
             item.value = '';
         });
-        upload.forEach (item => {
+        upload.forEach(item => {
             item.previousElementSibling.textContent = "Файл не выбран";
-        })
+        });
     };
 
     upload.forEach(item => {
-        item.addEventListener("input", () => {
+        item.addEventListener('input', () => {
             console.log(item.files[0]);
             let dots;
-            const arr = item.files[0].name.split(".");
-            arr[0].length > 6 ? dots = "..." : dots = ".";
+            const arr = item.files[0].name.split('.');
+
+            arr[0].length > 6 ? dots = "..." : dots = '.';
             const name = arr[0].substring(0, 6) + dots + arr[1];
             item.previousElementSibling.textContent = name;
         });
@@ -58,44 +55,42 @@ const forms = () => {
             statusMessage.classList.add('status');
             item.parentNode.appendChild(statusMessage);
 
-            item.classList.add("animated", "fadeOutUp");
+            item.classList.add('animated', 'fadeOutUp');
             setTimeout(() => {
-                item.style.display = "none";
+                item.style.display = 'none';
             }, 400);
 
-            let statusImg = document.createElement("img");
-            statusImg.setAttribute("src", message.spinner);
-            statusImg.classList.add("animated", "fadeInUp");
+            let statusImg = document.createElement('img');
+            statusImg.setAttribute('src', message.spinner);
+            statusImg.classList.add('animated', 'fadeInUp');
             statusMessage.appendChild(statusImg);
 
-            let textMessage = document.createElement("div");
+            let textMessage = document.createElement('div');
             textMessage.textContent = message.loading;
             statusMessage.appendChild(textMessage);
 
-
-
             const formData = new FormData(item);
             let api;
-            item.closest(".popup-design") || item.classList.contains("calc_form") ? api = path.designer : api = path.question;
+            item.closest('.popup-design') || item.classList.contains('calc_form') ? api = path.designer : api = path.question;
             console.log(api);
 
-            postData('assets/server.php', formData)
+            postData(api, formData)
                 .then(res => {
                     console.log(res);
-                    statusImg.setAttribute("src", message.ok);
+                    statusImg.setAttribute('src', message.ok);
                     textMessage.textContent = message.success;
                 })
                 .catch(() => {
-                    statusImg.setAttribute("src", message.fail);
+                    statusImg.setAttribute('src', message.fail);
                     textMessage.textContent = message.failure;
                 })
                 .finally(() => {
                     clearInputs();
                     setTimeout(() => {
                         statusMessage.remove();
-                        item.style.display = "block";
-                        item.classList.remove("fadeOutUp");
-                        item.classList.add("fadeInUp");
+                        item.style.display = 'block';
+                        item.classList.remove('fadeOutUp');
+                        item.classList.add('fadeInUp');
                     }, 5000);
                 });
         });
