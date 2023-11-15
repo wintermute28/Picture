@@ -630,6 +630,9 @@ h4 {
   display: inline-block;
   padding: 1rem 2rem;
   cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 50px;
+  transition: all .3s;
 }
 .portfolio ul .active {
   border: 1px solid #c51abb;
