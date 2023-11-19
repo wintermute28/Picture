@@ -630,6 +630,9 @@ h4 {
   display: inline-block;
   padding: 1rem 2rem;
   cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 50px;
+  transition: all .3s;
 }
 .portfolio ul .active {
   border: 1px solid #c51abb;
@@ -902,10 +905,31 @@ h4 {
 .often-questions .accordion-heading span {
   border-bottom: 2px dotted #333;
 }
+.often-questions p.active-style span {
+  color: #E950D7;
+  font-weight: 900;
+  text-decoration: none;
+  border: 0;
+}
+.often-questions .accordion-heading.active+.accordion-block {
+  display: block;
+}
 .often-questions .accordion-block {
-  margin-top: 1rem;
   background-color: #f7e7e6;
+  max-height: 0;
+  opacity: 0;
+  transition: all .3s ease-out;
+  overflow: hidden;
+  /* display: none; */
+  /* margin-top: 1rem; */
+  /* padding: 3rem 4rem; */
+}
+.often-questions .accordion-block.active-content {
+  overflow: visible;
+  opacity: 1;
   padding: 3rem 4rem;
+  margin-top: 1rem;
+
 }
 .often-questions .accordion-block:before {
   content: '';
@@ -1258,6 +1282,22 @@ h4 {
   transform: translateX(-50%) !important;
   padding: 3rem 6rem 4rem 6rem;
 }
+.status {
+	text-align: center;
+}
+.pageup {
+  opacity: 0;
+width: 26px ;
+height: 26px;
+position: fixed;
+bottom: 100px;
+right: 5%;
+z-index: 30;
+background-color: #fff;
+cursor: pointer;
+border: 1px solid white;
+  transition: 1s all;
+}
 @media (max-width: 1399px) {
   .paints {
     display: none;
@@ -1491,6 +1531,9 @@ h4 {
     margin-left: auto;
     margin-right: auto;
   }
+  .main-slider img {
+    width: 100%;
+  }
   .card-block {
     padding: 5rem;
   }
@@ -1539,6 +1582,9 @@ h4 {
   .card-3 img {
     float: right;
   }
+  .feedback {
+    height: 700px;
+  }
   .feedback-slider-item {
     padding-bottom: 0;
   }
@@ -1581,6 +1627,9 @@ h4 {
   .main-slider-btn {
     width: 2rem;
     height: 2rem;
+  }
+  .main-slider img {
+    width: 100%;
   }
   .main .logo {
     font-size: 1.5rem;
@@ -1681,6 +1730,12 @@ h4 {
   }
   .promo-2 {
     padding: 5rem 0;
+  }
+  .feedback {
+    height: 800px;
+  }
+  .feedback img{
+    width: 100%;
   }
   .feedback {
     padding: 5rem 0;
