@@ -1531,6 +1531,9 @@ border: 1px solid white;
     margin-left: auto;
     margin-right: auto;
   }
+  .main-slider img {
+    width: 100%;
+  }
   .card-block {
     padding: 5rem;
   }
@@ -1579,6 +1582,9 @@ border: 1px solid white;
   .card-3 img {
     float: right;
   }
+  .feedback {
+    height: 700px;
+  }
   .feedback-slider-item {
     padding-bottom: 0;
   }
@@ -1621,6 +1627,9 @@ border: 1px solid white;
   .main-slider-btn {
     width: 2rem;
     height: 2rem;
+  }
+  .main-slider img {
+    width: 100%;
   }
   .main .logo {
     font-size: 1.5rem;
@@ -1721,6 +1730,12 @@ border: 1px solid white;
   }
   .promo-2 {
     padding: 5rem 0;
+  }
+  .feedback {
+    height: 800px;
+  }
+  .feedback img{
+    width: 100%;
   }
   .feedback {
     padding: 5rem 0;
